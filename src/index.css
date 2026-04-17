@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-bg-milk: #ffffff;
+  --color-ink: #111111;
+  --color-ink-soft: #151515;
+  --color-secondary: #6F6F6A;
+  --color-divider: #7B7B76;
+  
+  --color-lime: #E5EF9A;
+  --color-violet: #3322B6;
+  --color-blush: #F1E5E1;
+  --color-black-pure: #0A0A0A;
+}
+
+@layer base {
+  body {
+    @apply bg-bg-milk text-ink font-sans antialiased;
+  }
+  
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight text-ink-soft;
+    line-height: 1.05;
+  }
+}
+
+@layer utilities {
+  .container-wide {
+    @apply max-w-[1280px] mx-auto px-10 md:px-14;
+  }
+  
+  .section-gap {
+    @apply py-20 md:py-32;
+  }
+  
+  .editorial-divider {
+    @apply border-t border-ink opacity-100;
+  }
+
+  .hatch-pattern {
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 4px,
+      rgba(51, 34, 182, 0.1) 4px,
+      rgba(51, 34, 182, 0.1) 8px
+    );
+  }
+}
