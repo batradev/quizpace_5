@@ -263,7 +263,7 @@ export default function HowItWorks() {
   return (
     <section id="how-it-works" className="container-wide pt-20 md:pt-32 pb-10 md:pb-16 bg-bg-milk">
       <div className="mb-10">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4">How does it work?</h2>
+        <h2 className="text-4xl md:text-6xl font-bold mb-4">How it works</h2>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center mb-20 min-h-[500px]">

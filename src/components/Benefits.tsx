@@ -8,12 +8,12 @@ const benefits = [
     image: "/1_card.png"
   },
   {
-    title: "Personalized study plan",
+    title: "Personalize your study plan",
     text: "The app organizes what to learn and when to review it, so you always know what to study today and how to stay on track.",
     image: "/2_card.png"
   },
   {
-    title: "Real study material",
+    title: "Use your actual materials",
     text: "Work with text, tables, formulas, and handwritten notes — the kinds of materials students actually use.",
     image: "/3_card.png"
   }
