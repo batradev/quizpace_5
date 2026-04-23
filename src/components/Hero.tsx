@@ -32,13 +32,13 @@ const StudyCard = ({
     </div>
 
     {/* Bottom: Question Area */}
-    <div className="h-[40%] p-6 flex flex-col justify-between">
-      <div className="space-y-2">
-        {question && <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary opacity-60">Question:</span>}
-        <h3 className="text-lg md:text-xl font-bold leading-tight tracking-tight uppercase">{question}</h3>
+    <div className="h-[40%] p-4 md:p-6 flex flex-col justify-between">
+      <div className="space-y-1 md:space-y-2">
+        {question && <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-secondary opacity-60">Question:</span>}
+        <h3 className="text-[13px] md:text-xl font-bold leading-tight tracking-tight uppercase">{question}</h3>
       </div>
-      <div className="pt-4 border-t border-ink/20 flex justify-between items-center">
-        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink">Check The Answer</span>
+      <div className="pt-3 md:pt-4 border-t border-ink/20 flex justify-between items-center">
+        <span className="text-[8px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-ink">Check The Answer</span>
       </div>
     </div>
   </motion.div>
@@ -47,13 +47,13 @@ const StudyCard = ({
 export default function Hero() {
   return (
     <section className="container-wide section-gap pt-16 md:pt-24">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-start">
         <div className="max-w-2xl">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-5xl md:text-7xl font-bold mb-8 leading-[0.95]"
+            className="text-[42px] leading-[1.0] md:leading-[0.95] md:text-7xl font-bold mb-4 md:mb-6 tracking-tight"
           >
             Prepare for exams faster with AI flashcards
           </motion.h1>
@@ -63,31 +63,31 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <p className="text-xl md:text-2xl text-secondary mb-6 leading-relaxed max-w-lg">
+            <p className="text-lg md:text-2xl text-secondary mb-8 md:mb-10 leading-relaxed max-w-lg">
               Upload your notes or PDFs. Quizpace turns them into interactive flashcards and a personalized study plan in minutes.
             </p>
-            <p className="text-lg text-secondary mb-10 leading-relaxed max-w-lg">
+            <p className="hidden">
               Quizpace is coming soon. Join the waitlist to study smarter and prepare with confidence.
             </p>
             
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-wrap gap-6 items-center">
+            <div className="flex flex-col md:items-start mb-0 md:mb-16">
+              <div className="flex flex-col items-center gap-3 w-full md:w-auto">
                 <a 
                   href="#benefits" 
-                  className="group flex items-center gap-2 px-8 py-4 bg-ink text-white rounded-full text-lg font-bold hover:bg-ink/90 transition-all shadow-lg shadow-ink/10"
+                  className="w-full md:w-auto group flex justify-center items-center gap-2 px-8 py-4 bg-ink text-white rounded-full text-lg font-bold hover:bg-ink/90 transition-all shadow-lg shadow-ink/10"
                 >
                   Learn more
                 </a>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-secondary opacity-40 text-center">
+                  Launching May 2026
+                </p>
               </div>
-              <p className="text-[10px] font-bold uppercase tracking-wider text-secondary opacity-40 ml-4">
-                Launching May 2026
-              </p>
             </div>
           </motion.div>
         </div>
 
-        <div className="relative aspect-square lg:aspect-auto lg:h-[600px] flex items-center justify-center p-8 md:p-16">
-          <div className="relative w-full max-w-sm aspect-[3/4] lg:-translate-y-12 lg:translate-x-12">
+        <div className="relative min-h-[440px] lg:min-h-[600px] flex items-center justify-center py-4 md:p-16 lg:p-16">
+          <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:max-w-sm aspect-[3/4] lg:-translate-y-12 lg:translate-x-12">
             {/* Back Card: Mitochondria */}
             <StudyCard 
               color="bg-blush"

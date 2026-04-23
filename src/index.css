@@ -28,15 +28,15 @@
 
 @layer utilities {
   .container-wide {
-    @apply max-w-[1280px] mx-auto px-10 md:px-14;
+    @apply max-w-[1280px] mx-auto px-6 md:px-10 lg:px-14;
   }
   
   .section-gap {
-    @apply py-20 md:py-32;
+    @apply py-16 md:py-32;
   }
   
   .editorial-divider {
-    @apply border-t border-ink opacity-100;
+    @apply border-t border-ink opacity-100 -mx-6 md:mx-0;
   }
 
   .hatch-pattern {

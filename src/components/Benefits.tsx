@@ -22,8 +22,8 @@ const benefits = [
 export default function Benefits() {
   return (
     <section id="benefits" className="container-wide section-gap">
-      <div className="flex flex-col md:flex-row justify-between items-end mb-10 gap-8">
-        <h2 className="text-4xl md:text-5xl font-bold max-w-md">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 md:mb-10 gap-4 md:gap-8">
+        <h2 className="text-sm font-bold uppercase tracking-widest text-secondary md:text-ink md:text-5xl md:normal-case md:tracking-tight max-w-md">
           Why Quizpace
         </h2>
       </div>
@@ -31,7 +31,7 @@ export default function Benefits() {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {benefits.map((benefit, index) => (
           <div key={index} className="group cursor-default">
-            <div className="aspect-[4/3] rounded-[24px] mb-8 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] bg-bg-milk border border-ink/5">
+            <div className="aspect-[4/3] rounded-[24px] mb-4 md:mb-8 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02] bg-bg-milk border border-ink/5">
               <img 
                 src={benefit.image} 
                 alt={benefit.title} 

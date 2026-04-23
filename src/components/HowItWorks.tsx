@@ -261,13 +261,13 @@ export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="how-it-works" className="container-wide pt-20 md:pt-32 pb-10 md:pb-16 bg-bg-milk">
-      <div className="mb-10">
+    <section id="how-it-works" className="container-wide pt-16 md:pt-32 pb-8 md:pb-16 bg-bg-milk">
+      <div className="mb-6 md:mb-10">
         <h2 className="text-4xl md:text-6xl font-bold mb-4">How it works</h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center mb-20 min-h-[500px]">
-        <div className="relative aspect-square bg-blush rounded-[32px] p-12 overflow-hidden">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-32 items-center mb-8 md:mb-20 min-h-[400px] lg:min-h-[500px]">
+        <div className="relative aspect-square bg-blush rounded-[32px] p-6 lg:p-12 overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
@@ -291,7 +291,7 @@ export default function HowItWorks() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.4 }}
             >
-              <h3 className="text-3xl md:text-4xl font-bold mb-6">
+              <h3 className="hidden md:block text-3xl md:text-4xl font-bold mb-6">
                 {steps[activeStep].title}
               </h3>
               <p className="text-xl text-secondary leading-relaxed mb-8">
@@ -310,21 +310,21 @@ export default function HowItWorks() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 border-t border-ink">
+      <div className="flex flex-col md:grid md:grid-cols-4 border-t border-ink">
         {steps.map((step, index) => (
           <button
             key={step.id}
             onClick={() => setActiveStep(index)}
-            className={`group py-8 px-4 text-left transition-all relative ${activeStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+            className={`group py-4 px-0 md:py-8 md:px-4 text-left transition-all relative flex flex-row items-center md:items-start md:flex-col gap-4 md:gap-0 border-b border-ink/10 md:border-b-0 md:border-transparent ${activeStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
           >
             {activeStep === index && (
               <motion.div 
                 layoutId="active-step-indicator"
-                className="absolute top-0 left-0 w-full h-1 bg-ink" 
+                className="absolute top-0 left-0 w-1 h-full md:w-full md:h-1 bg-ink hidden md:block" 
               />
             )}
-            <span className="block text-xs font-bold mb-2 tracking-widest">{step.id}</span>
-            <span className="block text-sm font-bold uppercase">{step.title.split(' ').slice(0, 2).join(' ')}</span>
+            <span className="block text-sm md:text-xs font-bold md:mb-2 tracking-widest">{step.id}</span>
+            <span className="block text-base md:text-sm font-bold uppercase">{step.title}</span>
           </button>
         ))}
       </div>

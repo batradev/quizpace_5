@@ -4,10 +4,10 @@ import { ArrowUpRight } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-bg-milk pt-16 pb-10">
+    <footer className="bg-bg-milk pt-8 md:pt-16 pb-10">
       <div className="container-wide">
         {/* Pre-footer CTA */}
-        <div className="bg-ink text-white rounded-[40px] p-12 md:p-20 mb-20 flex flex-col md:flex-row justify-between items-center gap-12">
+        <div className="bg-ink text-white rounded-[40px] p-8 md:p-20 mb-10 md:mb-20 flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
           <div className="max-w-xl text-center md:text-left">
             <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">Start studying with less chaos</h2>
             <p className="text-xl opacity-60">Upload your first file and get a clear, personalized review plan in minutes.</p>
@@ -20,8 +20,8 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
-          <div className="space-y-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 md:gap-12 mb-20">
+          <div className="col-span-2 md:col-span-1 space-y-4 md:space-y-6">
             <span className="text-xl font-bold tracking-tighter uppercase block mb-2">Quizpace</span>
             <p className="text-secondary text-sm leading-relaxed max-w-xs">
               AI-powered exam prep made simpler. Turn your study materials into results.
@@ -50,7 +50,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="space-y-6">
+          <div className="col-span-2 md:col-span-1 space-y-6 md:mt-0 pt-2 md:pt-0">
             <h4 className="text-xs font-bold uppercase tracking-widest text-secondary">Connect</h4>
             <ul className="space-y-4">
               <li><Link to="/contact" className="text-sm font-medium hover:text-secondary transition-colors">Contact</Link></li>

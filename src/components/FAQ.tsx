@@ -33,17 +33,17 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="container-wide pt-10 md:pt-16 pb-20 md:pb-24">
-      <h2 className="text-4xl md:text-5xl font-bold mb-16">Frequently asked questions</h2>
+    <section id="faq" className="container-wide pt-10 md:pt-16 pb-8 md:pb-24">
+      <h2 className="text-3xl md:text-5xl font-bold mb-8 md:mb-16">Frequently asked questions</h2>
       
       <div className="space-y-0 border-t border-ink">
         {faqs.map((faq, index) => (
           <div key={index} className="border-b border-ink">
             <button
               onClick={() => setOpenIndex(openIndex === index ? null : index)}
-              className="w-full py-8 flex justify-between items-center text-left group"
+              className="w-full py-5 md:py-8 flex justify-between items-center text-left group"
             >
-              <span className="text-xl md:text-2xl font-bold group-hover:opacity-70 transition-opacity pr-8">
+              <span className="text-lg md:text-2xl font-bold group-hover:opacity-70 transition-opacity pr-6 md:pr-8">
                 {faq.question}
               </span>
               <div className="flex-shrink-0">
@@ -60,7 +60,7 @@ export default function FAQ() {
                   transition={{ duration: 0.3, ease: 'easeInOut' }}
                   className="overflow-hidden"
                 >
-                  <div className="pb-8 text-lg text-secondary leading-relaxed max-w-2xl">
+                  <div className="pb-5 md:pb-8 text-base md:text-lg text-secondary leading-relaxed max-w-2xl">
                     {faq.answer}
                   </div>
                 </motion.div>

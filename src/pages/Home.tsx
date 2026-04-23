@@ -9,7 +9,7 @@ import Footer from '../components/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-bg-milk selection:bg-lime selection:text-ink">
+    <div className="min-h-screen bg-bg-milk selection:bg-lime selection:text-ink overflow-hidden">
       <Header />
       <main>
         <Hero />
