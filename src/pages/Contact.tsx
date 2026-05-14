@@ -9,10 +9,10 @@ export default function Contact() {
       <Header />
       <main className="container-wide py-24">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-5xl md:text-7xl font-bold mb-12 tracking-tight text-center sm:text-left">Contact Us</h1>
+          <h1 className="text-4xl md:text-7xl font-bold mb-8 md:mb-12 tracking-tight text-left">Contact Us</h1>
           
-          <div className="space-y-12 bg-white/50 p-8 md:p-12 mt-8 rounded-[32px] border border-divider/10 shadow-sm">
-            <p className="text-xl text-secondary leading-relaxed">
+          <div className="space-y-8 md:space-y-12 bg-white/50 p-6 md:p-12 mt-8 rounded-[32px] border border-divider/10 shadow-sm">
+            <p className="text-base md:text-xl text-secondary leading-relaxed">
               Have questions about Quizpace or need support? We're here to help you optimize your study workflow.
             </p>
             
@@ -22,8 +22,8 @@ export default function Contact() {
                   <Mail size={24} className="text-violet" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-secondary mb-1">Email</h3>
-                  <a href="mailto:contact@quizpace.com" className="text-xl font-medium hover:opacity-70 transition-opacity">
+                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-widest text-secondary mb-1">Email</h3>
+                  <a href="mailto:contact@quizpace.com" className="text-lg md:text-xl font-medium hover:opacity-70 transition-opacity">
                     contact@quizpace.com
                   </a>
                 </div>
@@ -34,8 +34,8 @@ export default function Contact() {
                   <MapPin size={24} className="text-violet" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-secondary mb-1">Mailing Address</h3>
-                  <p className="text-xl font-medium leading-tight">
+                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-widest text-secondary mb-1">Mailing Address</h3>
+                  <p className="text-lg md:text-xl font-medium leading-tight">
                     2300 St Mathieu st, #409<br />
                     Montreal, QC, H3H 2J8
                   </p>
@@ -47,8 +47,8 @@ export default function Contact() {
                   <Building2 size={24} className="text-violet" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-secondary mb-1">Legal Entity</h3>
-                  <p className="text-xl font-medium">
+                  <h3 className="text-xs md:text-sm font-bold uppercase tracking-widest text-secondary mb-1">Legal Entity</h3>
+                  <p className="text-lg md:text-xl font-medium">
                     9528-9468 Québec Inc.
                   </p>
                 </div>

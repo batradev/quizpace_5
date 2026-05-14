@@ -8,7 +8,7 @@ export default function Progress() {
         {/* Left Column: Readiness */}
         <div className="space-y-12">
           <div className="space-y-6">
-            <h2 className="text-4xl md:text-5xl font-bold">Track your readiness</h2>
+            <h2 className="text-4xl md:text-5xl font-bold">Track your readiness and course mastery</h2>
             <p className="text-xl text-secondary leading-relaxed">
               See more than just time spent studying. Measure how close you are to your goal with a simple readiness indicator tied to your flashcards and exam timeline.
             </p>

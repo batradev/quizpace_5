@@ -48,7 +48,7 @@ export default function Hero() {
   return (
     <section className="container-wide section-gap pt-16 md:pt-24">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-16 items-start">
-        <div className="max-w-2xl">
+        <div className="max-w-2xl pt-4 md:pt-8 lg:pt-16">
           <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

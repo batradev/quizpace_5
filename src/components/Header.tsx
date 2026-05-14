@@ -7,12 +7,8 @@ export default function Header() {
     <header className="w-full bg-bg-milk sticky top-0 z-50 border-b border-ink md:border-b-0">
       <div className="container-wide py-4 flex items-center justify-between">
         {/* Left: Logo & Name */}
-        <div className="flex-1 flex items-center gap-1.5">
-          <div className="text-ink">
-            {/* <Brain size={20} strokeWidth={2.5} /> */}
-            <img src="/logo_1.png" alt="Quizpace Logo" className="h-6 w-auto object-contain" referrerPolicy="no-referrer" />
-          </div>
-          <Link to="/" className="text-base font-bold tracking-tight text-ink-soft">
+        <div className="flex-1 flex items-center">
+          <Link to="/" className="text-[22px] md:text-[26px] font-semibold tracking-tight text-ink hover:opacity-80 transition-opacity">
             Quizpace
           </Link>
         </div>
