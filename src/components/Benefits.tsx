@@ -5,17 +5,17 @@ const benefits = [
   {
     title: "Save time on exam prep",
     text: "Stop spending hours turning notes into study material by hand. AI helps you go from raw content to active recall much faster.",
-    image: "/1_card.png"
+    image: "/1_card_v2.jpg"
   },
   {
     title: "Personalize your study plan",
     text: "The app organizes what to learn and when to review it, so you always know what to study today and how to stay on track.",
-    image: "/2_card.png"
+    image: "/2_card_v2.jpg"
   },
   {
     title: "Use your actual materials",
     text: "Work with text, tables, formulas, and handwritten notes — the kinds of materials students actually use.",
-    image: "/3_card.png"
+    image: "/3_card_v3.jpg"
   }
 ];
 
