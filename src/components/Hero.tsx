@@ -8,19 +8,21 @@ const StudyCard = ({
   diagram, 
   rotation = 0, 
   zIndex = 0, 
-  delay = 0 
+  delay = 0,
+  noFade = false
 }: { 
   color: string, 
   question: string, 
   diagram: React.ReactNode, 
   rotation?: number, 
   zIndex?: number,
-  delay?: number
+  delay?: number,
+  noFade?: boolean
 }) => (
   <motion.div 
-    initial={{ opacity: 0, y: 40, rotate: rotation }}
-    animate={{ opacity: 1, y: 0, rotate: rotation }}
-    transition={{ duration: 1, delay, ease: [0.16, 1, 0.3, 1] }}
+    initial={{ opacity: noFade ? 1 : 0, y: 30, scale: 0.95, rotate: 0 }}
+    animate={{ opacity: 1, y: 0, scale: 1, rotate: rotation }}
+    transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
     style={{ zIndex }}
     className="absolute top-0 left-0 w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
   >
@@ -71,7 +73,12 @@ export default function Hero() {
             </p>
             
             <div className="flex flex-col md:items-start mb-0 md:mb-16">
-              <div className="flex flex-col items-center gap-3 w-full md:w-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col items-center gap-3 w-full md:w-auto"
+              >
                 <a 
                   href="#benefits" 
                   className="w-full md:w-auto group flex justify-center items-center gap-2 px-8 py-4 bg-ink text-white rounded-full text-lg font-bold hover:bg-ink/90 transition-all shadow-lg shadow-ink/10"
@@ -81,7 +88,7 @@ export default function Hero() {
                 <p className="text-[10px] font-bold uppercase tracking-wider text-secondary opacity-40 text-center">
                   Launching May 2026
                 </p>
-              </div>
+              </motion.div>
             </div>
           </motion.div>
         </div>
@@ -94,7 +101,7 @@ export default function Hero() {
               question=""
               rotation={8}
               zIndex={10}
-              delay={0.4}
+              delay={0.2}
               diagram={null}
             />
 
@@ -104,7 +111,7 @@ export default function Hero() {
               question=""
               rotation={-4}
               zIndex={20}
-              delay={0.3}
+              delay={0.1}
               diagram={null}
             />
 
@@ -114,7 +121,8 @@ export default function Hero() {
               question="Which part of the neuron receives incoming signals?"
               rotation={-12}
               zIndex={30}
-              delay={0.2}
+              delay={0}
+              noFade={true}
               diagram={
                 <img 
                   src="/Neuron_1.png" 

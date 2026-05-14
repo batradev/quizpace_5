@@ -5,7 +5,7 @@ import { ArrowUpRight, Brain } from 'lucide-react';
 export default function Header() {
   return (
     <header className="w-full bg-bg-milk sticky top-0 z-50 border-b border-ink md:border-b-0">
-      <div className="container-wide py-4 flex items-center justify-between">
+      <div className="container-wide py-2 md:py-3 flex items-center justify-between">
         {/* Left: Logo & Name */}
         <div className="flex-1 flex items-center">
           <Link to="/" className="text-[22px] md:text-[26px] font-semibold tracking-tight text-ink hover:opacity-80 transition-opacity">
@@ -21,9 +21,9 @@ export default function Header() {
           <a href="/#faq" className="hidden sm:flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
             FAQ
           </a>
-          <a href="/contact" className="flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
+          <Link to="/contact" className="flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
             Contact
-          </a>
+          </Link>
         </div>
       </div>
       <div className="container-wide hidden md:block">

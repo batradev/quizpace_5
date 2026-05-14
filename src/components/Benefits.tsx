@@ -15,7 +15,7 @@ const benefits = [
   {
     title: "Use your actual materials",
     text: "Work with text, tables, formulas, and handwritten notes — the kinds of materials students actually use.",
-    image: "/3_card_v3.jpg"
+    image: "/3_card_v4.jpg"
   }
 ];
 
