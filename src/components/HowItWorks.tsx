@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Upload, Edit3, Target, Play } from 'lucide-react';
+import { Upload, Edit3, Target, Play, Pencil, Trash2 } from 'lucide-react';
 
 const steps = [
   {
@@ -10,7 +10,7 @@ const steps = [
     bullets: ["Supports PDF, PNG, JPG, and more"],
     icon: <Upload size={40} />,
     mockup: (
-      <div className="w-full h-full bg-white rounded-2xl border border-divider/20 flex flex-col overflow-hidden shadow-sm relative">
+      <div className="w-full h-full bg-white rounded-[24px] border border-divider/20 flex flex-col overflow-hidden shadow-sm relative">
         {/* Window Top Bar */}
         <div className="h-6 bg-secondary/5 border-b border-divider/10 flex items-center px-4 gap-1.5 shrink-0">
           <div className="w-1.5 h-1.5 rounded-full bg-divider/20" />
@@ -134,7 +134,7 @@ const steps = [
     bullets: ["See source references for every card", "Compare with original material highlighting"],
     icon: <Edit3 size={40} />,
     mockup: (
-      <div className="w-full h-full bg-white rounded-2xl border border-divider/20 p-6 space-y-4">
+      <div className="w-full h-full bg-white rounded-[24px] border border-divider/20 p-6 space-y-4">
         <div className="flex justify-between items-center border-b border-divider/10 pb-2">
           <span className="text-xs font-bold uppercase tracking-tighter">Reviewing Deck</span>
           <span className="text-[10px] bg-lime px-2 py-0.5 rounded-full font-bold">12 Cards</span>
@@ -146,8 +146,12 @@ const steps = [
               <div className="h-2 w-16 bg-ink/10 rounded-full" />
             </div>
             <div className="flex gap-2">
-              <div className="w-6 h-6 rounded bg-white border border-divider/20" />
-              <div className="w-6 h-6 rounded bg-white border border-divider/20" />
+              <div className="w-8 h-8 rounded-md bg-white border border-divider/20 flex items-center justify-center text-ink opacity-70">
+                <Pencil size={16} />
+              </div>
+              <div className="w-8 h-8 rounded-md bg-white border border-divider/20 flex items-center justify-center text-ink opacity-70">
+                <Trash2 size={16} />
+              </div>
             </div>
           </div>
         ))}
@@ -161,7 +165,7 @@ const steps = [
     bullets: ["Finish new material days before the exam"],
     icon: <Target size={40} />,
     mockup: (
-      <div className="w-full h-full bg-white rounded-2xl border border-divider/20 p-8 flex flex-col justify-center items-center">
+      <div className="w-full h-full bg-white rounded-[24px] border border-divider/20 p-8 flex flex-col justify-center items-center">
         <div className="w-full space-y-4">
           <div className="flex justify-between items-center mb-2">
             <span className="text-sm font-bold uppercase tracking-widest">June 2026</span>
@@ -217,8 +221,8 @@ const steps = [
     bullets: ["Adapts if you miss days", "Readiness percentage and daily workload"],
     icon: <Play size={40} />,
     mockup: (
-      <div className="w-full h-full bg-white rounded-2xl border border-divider/20 p-8 flex flex-col items-center justify-center gap-6">
-        <div className="relative w-32 h-32 rounded-full flex items-center justify-center">
+      <div className="w-full h-full bg-white rounded-[24px] border border-divider/20 p-8 flex flex-col items-center justify-center gap-6">
+        <div className="relative w-36 h-36 rounded-full flex items-center justify-center">
           <svg viewBox="0 0 128 128" className="absolute inset-0 w-full h-full -rotate-90">
             {/* Background Track */}
             <circle 
@@ -243,11 +247,11 @@ const steps = [
               className="text-violet" 
             />
           </svg>
-          <span className="text-2xl font-bold relative z-10">62%</span>
+          <span className="text-3xl font-bold tracking-tight relative z-10">62%</span>
         </div>
-        <div className="text-center space-y-1">
-          <p className="text-sm font-bold">Today: 16 cards to master</p>
-          <p className="text-xs text-secondary">Readiness is increasing</p>
+        <div className="text-center space-y-1.5">
+          <p className="text-base font-bold">Today: 16 cards to master</p>
+          <p className="text-[13px] text-secondary">Readiness is increasing</p>
         </div>
         <button className="bg-ink text-white px-8 py-3 rounded-full text-sm font-bold hover:opacity-90 transition-opacity">
           Start Session
@@ -259,6 +263,13 @@ const steps = [
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length);
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [activeStep]);
 
   return (
     <section id="how-it-works" className="container-wide pt-16 md:pt-32 pb-8 md:pb-16 bg-bg-milk">

@@ -4,11 +4,11 @@ import { Clock, Calendar, FileText } from 'lucide-react';
 const benefits = [
   {
     title: "Save time on exam prep",
-    text: "Stop spending hours turning notes into study material by hand. AI helps you go from raw content to active recall much faster.",
+    text: "Stop spending hours turning notes into study material by hand. AI helps you go from raw content to active recall.",
     image: "/1_card_v2.jpg"
   },
   {
-    title: "Personalize your study plan",
+    title: "Personalize study plan",
     text: "The app organizes what to learn and when to review it, so you always know what to study today and how to stay on track.",
     image: "/2_card_v2.jpg"
   },
@@ -39,8 +39,8 @@ export default function Benefits() {
                 referrerPolicy="no-referrer"
               />
             </div>
-            <h3 className="text-3xl font-bold mb-4">{benefit.title}</h3>
-            <p className="text-secondary leading-relaxed">
+            <h3 className="text-[26px] md:text-[32px] font-bold mb-3 md:mb-4 tracking-tight leading-tight">{benefit.title}</h3>
+            <p className="text-[17px] md:text-[19px] text-secondary leading-relaxed">
               {benefit.text}
             </p>
           </div>

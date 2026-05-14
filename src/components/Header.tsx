@@ -8,20 +8,20 @@ export default function Header() {
       <div className="container-wide py-2 md:py-3 flex items-center justify-between">
         {/* Left: Logo & Name */}
         <div className="flex-1 flex items-center">
-          <Link to="/" className="text-[22px] md:text-[26px] font-semibold tracking-tight text-ink hover:opacity-80 transition-opacity">
+          <Link to="/" className="text-[20px] md:text-[22px] font-bold tracking-tight text-ink hover:opacity-80 transition-opacity">
             Quizpace
           </Link>
         </div>
 
         {/* Right: Links */}
         <div className="flex-1 flex justify-end items-center gap-6">
-          <a href="/#how-it-works" className="hidden md:flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
+          <a href="/#how-it-works" className="hidden md:flex items-center gap-0.5 text-[14px] md:text-[15px] font-medium text-ink hover:opacity-60 transition-opacity">
             How it works
           </a>
-          <a href="/#faq" className="hidden sm:flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
+          <a href="/#faq" className="hidden sm:flex items-center gap-0.5 text-[14px] md:text-[15px] font-medium text-ink hover:opacity-60 transition-opacity">
             FAQ
           </a>
-          <Link to="/contact" className="flex items-center gap-0.5 text-sm font-medium text-ink hover:opacity-60 transition-opacity">
+          <Link to="/contact" className="flex items-center gap-0.5 text-[14px] md:text-[15px] font-medium text-ink hover:opacity-60 transition-opacity">
             Contact
           </Link>
         </div>

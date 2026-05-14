@@ -22,7 +22,7 @@ export default function Footer() {
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 md:gap-12 mb-20">
           <div className="col-span-2 md:col-span-1 space-y-4 md:space-y-6">
-            <Link to="/" className="-mt-1.5 md:-mt-2 text-[22px] md:text-[26px] font-semibold tracking-tight text-ink block mb-2 hover:opacity-80 transition-opacity">
+            <Link to="/" className="-mt-1.5 md:-mt-2 text-[20px] md:text-[22px] font-bold tracking-tight text-ink block mb-2 hover:opacity-80 transition-opacity">
               Quizpace
             </Link>
             <p className="text-secondary text-sm leading-relaxed max-w-xs">

@@ -24,7 +24,7 @@ const StudyCard = ({
     animate={{ opacity: 1, y: 0, scale: 1, rotate: rotation }}
     transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
     style={{ zIndex }}
-    className="absolute top-0 left-0 w-full h-full bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+    className="absolute top-0 left-0 w-full h-full bg-white rounded-[24px] shadow-2xl overflow-hidden flex flex-col"
   >
     {/* Top: Colored Area with Diagram */}
     <div className={`${color} h-[60%] relative flex items-center justify-center p-2`}>
