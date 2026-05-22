@@ -16,8 +16,9 @@
 }
 
 @layer base {
-  body {
+  html, body {
     @apply bg-bg-milk text-ink font-sans antialiased;
+    overflow-x: clip;
   }
   
   h1, h2, h3, h4 {

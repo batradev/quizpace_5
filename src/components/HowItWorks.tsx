@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Upload, Edit3, Target, Play, Pencil, Trash2 } from 'lucide-react';
 
@@ -263,82 +263,129 @@ const steps = [
 
 export default function HowItWorks() {
   const [activeStep, setActiveStep] = useState(0);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
+  // Derive active step purely from scroll position — no wheel interception
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length);
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [activeStep]);
+    const handleScroll = () => {
+      const wrapper = wrapperRef.current;
+      if (!wrapper) return;
+      const rect = wrapper.getBoundingClientRect();
+      const headerHeight = window.innerWidth >= 1024 ? 57 : 0; // Header height offset on desktop
+      const totalScrollable = rect.height - window.innerHeight;
+      if (totalScrollable <= 0) return;
+      // How far have we scrolled through the wrapper (0 → 1)
+      const progress = Math.max(0, Math.min(1, -(rect.top - headerHeight) / totalScrollable));
+      const step = Math.min(Math.floor(progress * steps.length), steps.length - 1);
+      setActiveStep(step);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <section id="how-it-works" className="container-wide pt-16 md:pt-32 pb-8 md:pb-16 bg-bg-milk">
-      <div className="mb-6 md:mb-10">
-        <h2 className="text-4xl md:text-6xl font-bold mb-4">How it works</h2>
-      </div>
+    <div ref={wrapperRef} className="h-auto lg:h-[300vh]">
+      <section
+        id="how-it-works"
+        className="relative lg:sticky lg:top-[57px] lg:h-[calc(100vh-57px)] bg-bg-milk flex flex-col justify-center overflow-hidden py-16 lg:py-0"
+      >
+        <div className="container-wide w-full flex flex-col lg:h-full lg:justify-between py-4 lg:py-6 lg:pt-14 lg:pb-4">
+          <div className="mb-4 md:mb-6">
+            <h2 className="text-4xl md:text-6xl font-bold">How it works</h2>
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-32 items-center mb-8 md:mb-20 min-h-[400px] lg:min-h-[500px]">
-        <div className="relative aspect-square bg-blush rounded-[32px] p-6 lg:p-12 overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full h-full"
-            >
-              {steps[activeStep].mockup}
-            </motion.div>
-          </AnimatePresence>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center flex-1 lg:my-2 min-h-0">
+            <div className="relative aspect-square bg-blush rounded-[32px] overflow-hidden w-full lg:max-h-[480px]">
+              {steps.map((step, index) => {
+                const isActive = activeStep === index;
+                return (
+                  <motion.div
+                    key={step.id}
+                    initial={false}
+                    animate={{
+                      opacity: isActive ? 1 : 0,
+                      x: isActive ? 0 : (index < activeStep ? -30 : 30),
+                      scale: isActive ? 1 : 0.96,
+                    }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className={`absolute inset-0 p-6 lg:p-12 w-full h-full flex items-center justify-center ${
+                      isActive ? 'pointer-events-auto z-10' : 'pointer-events-none z-0'
+                    }`}
+                  >
+                    {step.mockup}
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <div className="relative lg:min-h-[320px] w-full flex flex-col justify-center">
+              {steps.map((step, index) => {
+                const isActive = activeStep === index;
+                return (
+                  <motion.div
+                    key={step.id}
+                    initial={false}
+                    animate={{
+                      opacity: isActive ? 1 : 0,
+                      y: isActive ? 0 : (index < activeStep ? -15 : 15),
+                    }}
+                    transition={{ duration: 0.35, ease: 'easeOut' }}
+                    className={`w-full ${
+                      isActive 
+                        ? 'relative lg:absolute pointer-events-auto z-10' 
+                        : 'hidden lg:block lg:absolute pointer-events-none z-0'
+                    }`}
+                  >
+                    <h3 className="hidden md:block text-3xl md:text-4xl font-bold mb-4">
+                      {step.title}
+                    </h3>
+                    <p className="text-xl text-secondary leading-relaxed mb-6">
+                      {step.description}
+                    </p>
+                    <ul className="space-y-3">
+                      {step.bullets.map((bullet, i) => (
+                        <li key={i} className="flex items-start gap-3 text-secondary">
+                          <div className="mt-2 w-1.5 h-1.5 rounded-full bg-divider" />
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="flex flex-col md:grid md:grid-cols-4 border-t border-ink mt-4">
+            {steps.map((step, index) => (
+              <button
+                key={step.id}
+                onClick={() => {
+                  // Scroll to the appropriate position in the wrapper
+                  const wrapper = wrapperRef.current;
+                  if (!wrapper) return;
+                  const headerHeight = window.innerWidth >= 1024 ? 57 : 0; // Header offset
+                  const totalScrollable = wrapper.offsetHeight - window.innerHeight;
+                  const targetProgress = index / steps.length;
+                  const targetY = wrapper.offsetTop + targetProgress * totalScrollable - headerHeight;
+                  window.scrollTo({ top: targetY, behavior: 'smooth' });
+                }}
+                className={`group py-4 px-0 md:py-6 md:px-4 text-left transition-all relative flex flex-row items-center md:items-start md:flex-col gap-4 md:gap-0 border-b border-ink/10 md:border-b-0 md:border-transparent ${activeStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
+              >
+                {activeStep === index && (
+                  <motion.div
+                    layoutId="active-step-indicator"
+                    className="absolute top-0 left-0 w-1 h-full md:w-full md:h-1 bg-ink hidden md:block"
+                  />
+                )}
+                <span className="block text-sm md:text-xs font-bold md:mb-2 tracking-widest">{step.id}</span>
+                <span className="block text-base md:text-sm font-bold uppercase">{step.title}</span>
+              </button>
+            ))}
+          </div>
         </div>
-
-        <div className="space-y-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeStep}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4 }}
-            >
-              <h3 className="hidden md:block text-3xl md:text-4xl font-bold mb-6">
-                {steps[activeStep].title}
-              </h3>
-              <p className="text-xl text-secondary leading-relaxed mb-8">
-                {steps[activeStep].description}
-              </p>
-              <ul className="space-y-4">
-                {steps[activeStep].bullets.map((bullet, i) => (
-                  <li key={i} className="flex items-start gap-3 text-secondary">
-                    <div className="mt-2 w-1.5 h-1.5 rounded-full bg-divider" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          </AnimatePresence>
-        </div>
-      </div>
-
-      <div className="flex flex-col md:grid md:grid-cols-4 border-t border-ink">
-        {steps.map((step, index) => (
-          <button
-            key={step.id}
-            onClick={() => setActiveStep(index)}
-            className={`group py-4 px-0 md:py-8 md:px-4 text-left transition-all relative flex flex-row items-center md:items-start md:flex-col gap-4 md:gap-0 border-b border-ink/10 md:border-b-0 md:border-transparent ${activeStep === index ? 'opacity-100' : 'opacity-40 hover:opacity-70'}`}
-          >
-            {activeStep === index && (
-              <motion.div 
-                layoutId="active-step-indicator"
-                className="absolute top-0 left-0 w-1 h-full md:w-full md:h-1 bg-ink hidden md:block" 
-              />
-            )}
-            <span className="block text-sm md:text-xs font-bold md:mb-2 tracking-widest">{step.id}</span>
-            <span className="block text-base md:text-sm font-bold uppercase">{step.title}</span>
-          </button>
-        ))}
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
